@@ -96,9 +96,60 @@ check_python() {
 }
 check_python
 
+check_nodejs() {
+    echo "Checking whether asdf nodejs related plugins installed..."
+    declare -a plugins
+    plugins+=("yarn")
+    for plugin in ${plugins[@]}; do
+        set +e
+        result=`asdf plugin-list | grep ${plugin}`
+        set -e
+        if [ -z "$result" ]; then
+            echo "asdf ${plugin} plugin not installed. Installing..."
+            asdf plugin-add ${plugin}
+            echo "asdf ${plugin} plugin not installed. Installing... Done!"
+        else
+            echo "asdf ${plugin} plugin already installed."
+        fi
+    done
+
+    echo "Install yarn=${YARN_VERSION} with asdf if not yet..."
+    asdf install yarn ${YARN_VERSION}
+    echo "Setting asdf local yarn version in the workspace: ${WORKSPACE_DIR}..."
+    cd ${WORKSPACE_DIR} && asdf local yarn ${YARN_VERSION}
+    echo "Setting asdf local yarn version in the workspace: ${WORKSPACE_DIR}... Done!"
+}
+check_nodejs
+
+check_java() {
+    echo "Checking whether asdf java related plugins installed..."
+    declare -a plugins
+    plugins+=("java")
+    for plugin in ${plugins[@]}; do
+        set +e
+        result=`asdf plugin-list | grep ${plugin}`
+        set -e
+        if [ -z "$result" ]; then
+            echo "asdf ${plugin} plugin not installed. Installing..."
+            asdf plugin-add ${plugin}
+            echo "asdf ${plugin} plugin not installed. Installing... Done!"
+        else
+            echo "asdf ${plugin} plugin already installed."
+        fi
+    done
+
+    echo "Install java=${ASDF_JAVA_VERSION} with asdf if not yet..."
+    asdf install java ${ASDF_JAVA_VERSION}
+    echo "Setting asdf local java version in the workspace: ${WORKSPACE_DIR}..."
+    cd ${WORKSPACE_DIR} && asdf local java ${ASDF_JAVA_VERSION}
+    echo "Setting asdf local java version in the workspace: ${WORKSPACE_DIR}... Done!"
+}
+check_java
+
 checkout_repos() {
     repo="ai-flow-origin"
-    echo "Checking whether repository [$repo] exists..."
+    echo "Checking 
+    whether repository [$repo] exists..."
     repo_path=$WORKSPACE_DIR/$repo
     if [ -d "${repo_path}" ]; then
         echo "Skip as [$repo] already exists in ${repo_path}."

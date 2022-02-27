@@ -58,4 +58,4 @@ enable_python_venv
 update_python_dev_pkgs
 disable_python_venv
 
-# cd $WORKSPACE_DIR/ai-flow && make update-dev-env
+cd $WORKSPACE_DIR/ai-flow && make update-dev-env
