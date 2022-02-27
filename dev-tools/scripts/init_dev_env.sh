@@ -125,6 +125,8 @@ check_java() {
     echo "Checking whether asdf java related plugins installed..."
     declare -a plugins
     plugins+=("java")
+    plugins+=("maven")
+    plugins+=("gradle")
     for plugin in ${plugins[@]}; do
         set +e
         result=`asdf plugin-list | grep ${plugin}`
@@ -143,6 +145,18 @@ check_java() {
     echo "Setting asdf local java version in the workspace: ${WORKSPACE_DIR}..."
     cd ${WORKSPACE_DIR} && asdf local java ${ASDF_JAVA_VERSION}
     echo "Setting asdf local java version in the workspace: ${WORKSPACE_DIR}... Done!"
+
+    echo "Install gradle=${GRADLE_VERSION} with asdf if not yet..."
+    asdf install gradle ${GRADLE_VERSION}
+    echo "Setting asdf local gradle version in the workspace: ${WORKSPACE_DIR}..."
+    cd ${WORKSPACE_DIR} && asdf local gradle ${GRADLE_VERSION}
+    echo "Setting asdf local gradle version in the workspace: ${WORKSPACE_DIR}... Done!"
+
+    echo "Install maven=${MAVEN_VERSION} with asdf if not yet..."
+    asdf install maven ${MAVEN_VERSION}
+    echo "Setting asdf local maven version in the workspace: ${WORKSPACE_DIR}..."
+    cd ${WORKSPACE_DIR} && asdf local maven ${MAVEN_VERSION}
+    echo "Setting asdf local maven version in the workspace: ${WORKSPACE_DIR}... Done!"
 }
 check_java
 

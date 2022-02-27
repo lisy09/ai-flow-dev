@@ -13,5 +13,12 @@
             "path": ".ai-flow-venv"
         }
 	],
-    "settings": {}
+    "settings": {},
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "octref.vetur",
+            "vscjava.vscode-java-pack"
+        ]
+    }
 }
