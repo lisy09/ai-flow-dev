@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "ai-flow-dev"
+		},
+        {
+            "path": "ai-flow"
+        },
+		{
+			"path": "ai-flow-origin"
+		},
+        {
+            "path": ".ai-flow-venv"
+        }
+	],
+    "settings": {}
+}
