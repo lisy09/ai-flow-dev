@@ -1,23 +1,34 @@
 {
 	"folders": [
-		{
-			"path": "ai-flow-dev"
-		},
+        {
+            "path": "ai-flow-dev"
+        },
         {
             "path": "ai-flow"
         },
-		{
-			"path": "ai-flow-origin"
-		},
+        {
+            "path": "ai-flow-origin"
+        },
         {
             "path": ".ai-flow-venv"
+        },
+        {
+            "path": "ai-flow-custom"
         }
-	],
-    "settings": {},
+    ],
+    "settings": {
+        "java.autobuild.enabled": false,
+        "java.implementationsCodeLens.enabled": true,
+        "java.project.sourcePaths": [
+            "ai-flow/ai_flow/java"
+        ]
+    },
     "extensions": {
         "recommendations": [
             "ms-python.python",
             "octref.vetur",
+            "gabrielbb.vscode-lombok",
+            "vscjava.vscode-gradle",
             "vscjava.vscode-java-pack"
         ]
     }
